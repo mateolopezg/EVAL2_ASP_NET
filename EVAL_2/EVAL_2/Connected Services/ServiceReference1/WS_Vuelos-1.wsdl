@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ListarVuelos">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarVuelosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarVuelosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IdVuelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="vuelo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IdVueloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdVueloResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IdPasajero">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IdPasajeroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdPasajeroResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListarVuelosSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarVuelos" />
+  </wsdl:message>
+  <wsdl:message name="ListarVuelosSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarVuelosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IdVueloSoapIn">
+    <wsdl:part name="parameters" element="tns:IdVuelo" />
+  </wsdl:message>
+  <wsdl:message name="IdVueloSoapOut">
+    <wsdl:part name="parameters" element="tns:IdVueloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IdPasajeroSoapIn">
+    <wsdl:part name="parameters" element="tns:IdPasajero" />
+  </wsdl:message>
+  <wsdl:message name="IdPasajeroSoapOut">
+    <wsdl:part name="parameters" element="tns:IdPasajeroResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WS_Vuelos_1__0__0Soap">
+    <wsdl:operation name="ListarVuelos">
+      <wsdl:input message="tns:ListarVuelosSoapIn" />
+      <wsdl:output message="tns:ListarVuelosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IdVuelo">
+      <wsdl:input message="tns:IdVueloSoapIn" />
+      <wsdl:output message="tns:IdVueloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IdPasajero">
+      <wsdl:input message="tns:IdPasajeroSoapIn" />
+      <wsdl:output message="tns:IdPasajeroSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WS_Vuelos_1__0__0Soap" type="tns:WS_Vuelos_1__0__0Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarVuelos">
+      <soap:operation soapAction="http://tempuri.org/ListarVuelos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IdVuelo">
+      <soap:operation soapAction="http://tempuri.org/IdVuelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IdPasajero">
+      <soap:operation soapAction="http://tempuri.org/IdPasajero" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WS_Vuelos_1__0__0Soap12" type="tns:WS_Vuelos_1__0__0Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarVuelos">
+      <soap12:operation soapAction="http://tempuri.org/ListarVuelos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IdVuelo">
+      <soap12:operation soapAction="http://tempuri.org/IdVuelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IdPasajero">
+      <soap12:operation soapAction="http://tempuri.org/IdPasajero" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WS_Vuelos_1__0__0">
+    <wsdl:port name="WS_Vuelos_1__0__0Soap" binding="tns:WS_Vuelos_1__0__0Soap">
+      <soap:address location="http://localhost:51072/WS_Vuelos-1.0.0.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WS_Vuelos_1__0__0Soap12" binding="tns:WS_Vuelos_1__0__0Soap12">
+      <soap12:address location="http://localhost:51072/WS_Vuelos-1.0.0.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

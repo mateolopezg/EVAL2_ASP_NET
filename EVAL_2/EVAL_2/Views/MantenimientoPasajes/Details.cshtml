@@ -1,0 +1,58 @@
+﻿@model EVAL_2.Models.pasajes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>pasajes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.lugar_despegue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lugar_despegue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lugar_arribo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lugar_arribo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_despegue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_despegue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_arribo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_arribo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vuelo1.id_vuelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vuelo1.id_vuelo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_pasajes }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4c2c147a31cb4104a37fdb725fe8a7a6" Name="Diagram1">
+        <EntityTypeShape EntityType="bd_vuelaModel.avion" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_vuelaModel.pasajero" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_vuelaModel.pasajes" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_vuelaModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_vuelaModel.vuelo" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="bd_vuelaModel.FK__avion__vuelo__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_vuelaModel.FK__pasajero__pasaje__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_vuelaModel.FK__pasajero__vuelo__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_vuelaModel.FK__pasajes__vuelo__4F7CD00D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bd_vuelaModelStoreContainer" CdmEntityContainer="bd_vuelaEntities">
+    <EntitySetMapping Name="avion">
+      <EntityTypeMapping TypeName="bd_vuelaModel.avion">
+        <MappingFragment StoreEntitySet="avion">
+          <ScalarProperty Name="id_avion" ColumnName="id_avion" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="vuelo" ColumnName="vuelo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pasajero">
+      <EntityTypeMapping TypeName="bd_vuelaModel.pasajero">
+        <MappingFragment StoreEntitySet="pasajero">
+          <ScalarProperty Name="id_pasajero" ColumnName="id_pasajero" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="pasaje" ColumnName="pasaje" />
+          <ScalarProperty Name="vuelo" ColumnName="vuelo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pasajes">
+      <EntityTypeMapping TypeName="bd_vuelaModel.pasajes">
+        <MappingFragment StoreEntitySet="pasajes">
+          <ScalarProperty Name="id_pasajes" ColumnName="id_pasajes" />
+          <ScalarProperty Name="lugar_despegue" ColumnName="lugar_despegue" />
+          <ScalarProperty Name="lugar_arribo" ColumnName="lugar_arribo" />
+          <ScalarProperty Name="vuelo" ColumnName="vuelo" />
+          <ScalarProperty Name="fecha_despegue" ColumnName="fecha_despegue" />
+          <ScalarProperty Name="fecha_arribo" ColumnName="fecha_arribo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="bd_vuelaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vuelo">
+      <EntityTypeMapping TypeName="bd_vuelaModel.vuelo">
+        <MappingFragment StoreEntitySet="vuelo">
+          <ScalarProperty Name="id_vuelo" ColumnName="id_vuelo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="bd_vuelaModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="bd_vuelaModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="bd_vuelaModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="bd_vuelaModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bd_vuelaModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="bd_vuelaModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bd_vuelaModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="bd_vuelaModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="bd_vuelaModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EVAL_2.Models.pasajes>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Mantenimiento Vuelos</h2>
+
+<p>
+    @Html.ActionLink("Crear un nuevo vuelo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.lugar_despegue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lugar_arribo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_despegue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_arribo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vuelo1.id_vuelo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.lugar_despegue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lugar_arribo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_despegue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_arribo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vuelo1.id_vuelo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id_pasajes }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_pasajes }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.id_pasajes })
+        </td>
+    </tr>
+}
+
+</table>

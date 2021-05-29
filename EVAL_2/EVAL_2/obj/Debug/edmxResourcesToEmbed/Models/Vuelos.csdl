@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bd_vuelaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="avion">
+    <Key>
+      <PropertyRef Name="id_avion" />
+    </Key>
+    <Property Name="id_avion" Type="Int32" Nullable="false" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="vuelo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="vuelo1" Relationship="Self.FK__avion__vuelo__4CA06362" FromRole="avion" ToRole="vuelo" />
+  </EntityType>
+  <EntityType Name="pasajero">
+    <Key>
+      <PropertyRef Name="id_pasajero" />
+    </Key>
+    <Property Name="id_pasajero" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pasaje" Type="Int32" Nullable="false" />
+    <Property Name="vuelo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="pasajes" Relationship="Self.FK__pasajero__pasaje__52593CB8" FromRole="pasajero" ToRole="pasajes" />
+    <NavigationProperty Name="vuelo1" Relationship="Self.FK__pasajero__vuelo__534D60F1" FromRole="pasajero" ToRole="vuelo" />
+  </EntityType>
+  <EntityType Name="pasajes">
+    <Key>
+      <PropertyRef Name="id_pasajes" />
+    </Key>
+    <Property Name="id_pasajes" Type="Int32" Nullable="false" />
+    <Property Name="lugar_despegue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lugar_arribo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="vuelo" Type="Int32" />
+    <Property Name="fecha_despegue" Type="DateTime" Precision="0" />
+    <Property Name="fecha_arribo" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="pasajero" Relationship="Self.FK__pasajero__pasaje__52593CB8" FromRole="pasajes" ToRole="pasajero" />
+    <NavigationProperty Name="vuelo1" Relationship="Self.FK__pasajes__vuelo__4F7CD00D" FromRole="pasajes" ToRole="vuelo" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="vuelo">
+    <Key>
+      <PropertyRef Name="id_vuelo" />
+    </Key>
+    <Property Name="id_vuelo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="avion" Relationship="Self.FK__avion__vuelo__4CA06362" FromRole="vuelo" ToRole="avion" />
+    <NavigationProperty Name="pasajero" Relationship="Self.FK__pasajero__vuelo__534D60F1" FromRole="vuelo" ToRole="pasajero" />
+    <NavigationProperty Name="pasajes" Relationship="Self.FK__pasajes__vuelo__4F7CD00D" FromRole="vuelo" ToRole="pasajes" />
+  </EntityType>
+  <Association Name="FK__avion__vuelo__4CA06362">
+    <End Role="vuelo" Type="Self.vuelo" Multiplicity="1" />
+    <End Role="avion" Type="Self.avion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vuelo">
+        <PropertyRef Name="id_vuelo" />
+      </Principal>
+      <Dependent Role="avion">
+        <PropertyRef Name="vuelo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pasajero__pasaje__52593CB8">
+    <End Role="pasajes" Type="Self.pasajes" Multiplicity="1" />
+    <End Role="pasajero" Type="Self.pasajero" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pasajes">
+        <PropertyRef Name="id_pasajes" />
+      </Principal>
+      <Dependent Role="pasajero">
+        <PropertyRef Name="pasaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pasajero__vuelo__534D60F1">
+    <End Role="vuelo" Type="Self.vuelo" Multiplicity="1" />
+    <End Role="pasajero" Type="Self.pasajero" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vuelo">
+        <PropertyRef Name="id_vuelo" />
+      </Principal>
+      <Dependent Role="pasajero">
+        <PropertyRef Name="vuelo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pasajes__vuelo__4F7CD00D">
+    <End Role="vuelo" Type="Self.vuelo" Multiplicity="0..1" />
+    <End Role="pasajes" Type="Self.pasajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vuelo">
+        <PropertyRef Name="id_vuelo" />
+      </Principal>
+      <Dependent Role="pasajes">
+        <PropertyRef Name="vuelo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bd_vuelaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="avion" EntityType="Self.avion" />
+    <EntitySet Name="pasajero" EntityType="Self.pasajero" />
+    <EntitySet Name="pasajes" EntityType="Self.pasajes" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="vuelo" EntityType="Self.vuelo" />
+    <AssociationSet Name="FK__avion__vuelo__4CA06362" Association="Self.FK__avion__vuelo__4CA06362">
+      <End Role="vuelo" EntitySet="vuelo" />
+      <End Role="avion" EntitySet="avion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pasajero__pasaje__52593CB8" Association="Self.FK__pasajero__pasaje__52593CB8">
+      <End Role="pasajes" EntitySet="pasajes" />
+      <End Role="pasajero" EntitySet="pasajero" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pasajero__vuelo__534D60F1" Association="Self.FK__pasajero__vuelo__534D60F1">
+      <End Role="vuelo" EntitySet="vuelo" />
+      <End Role="pasajero" EntitySet="pasajero" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pasajes__vuelo__4F7CD00D" Association="Self.FK__pasajes__vuelo__4F7CD00D">
+      <End Role="vuelo" EntitySet="vuelo" />
+      <End Role="pasajes" EntitySet="pasajes" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(bd_vuelaModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(bd_vuelaModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
